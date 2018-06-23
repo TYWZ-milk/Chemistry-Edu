@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "注册";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/css/login.css")" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="App Loction Form,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements" />
+
+</head>
+<body>
+    <h1>化学教育平台</h1>
+    <div class="app-location">
+        <h2>注    册    账    号</h2>
+        <div class="line"><span></span></div>
+        <div class="location"><img src="@Url.Content("~/Content/images/location.png")" class="img-responsive" alt="" /></div>
+        <form action="../Home/Login" method="post">
+            <input type="text" class="text" name="ID" placeholder="学号">
+            <input type="password" name="password" placeholder="密码">
+            <input type="password" name="repassword" placeholder="再次输入密码">
+            <div class="submit"><input type="submit" value="注册"></div>
+            <div class="clear"></div>
+
+        </form>
+    </div>
+
+</body>
+</html>

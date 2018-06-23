@@ -1,0 +1,291 @@
+﻿
+@{
+    ViewBag.Title = "编辑个人信息";
+}
+
+<!doctype html>
+
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Style Sheet-->
+
+    <link rel="stylesheet" href="~/Content/css/style.css" />
+    <style>
+        #comment-form {
+            margin: 0px 0px 20px;
+        }
+
+            #comment-form h3 {
+                color: #ff5b5b;
+                font: 200 16px "Dosis";
+                margin: 0px 0px 20px;
+            }
+
+            #comment-form h4 {
+                color: dimgrey;
+                font: 200 16px "Dosis";
+                margin: -10px 0px 20px;
+            }
+
+            #comment-form input[type="text"] {
+                width: 180px;
+                height: 20px;
+                padding: 10px;
+                border: 1px solid #e3e3e3;
+                border-bottom-width: 2px;
+                margin: 0px 15px 15px 0px;
+                font: normal 12px Arial;
+                line-height: 20px;
+            }
+
+            #comment-form textarea {
+                width: 100%;
+                height: 130px;
+                padding: 10px 5px;
+                border: 1px solid #e3e3e3;
+                border-bottom-width: 2px;
+                margin: 0px 15px 15px 0px;
+                font: normal 12px Arial;
+                line-height: 20px;
+                resize: none;
+            }
+
+            #comment-form input[type="submit"] {
+                border: 1px solid #ce3d3d;
+                cursor: pointer;
+                background: #ff5b5b;
+                height: 30px;
+                min-width: 110px;
+                color: #fff;
+                font: normal 12px Arial;
+            }
+
+            #comment-form input[type="button"] {
+                border: 1px solid #ce3d3d;
+                cursor: pointer;
+                background: #ff5b5b;
+                height: 30px;
+                min-width: 110px;
+                color: #fff;
+                font: normal 12px Arial;
+            }
+
+            #comment-form input[type="file"] {
+                display: none;
+                border: 1px solid #ce3d3d;
+                cursor: pointer;
+                background: #ff5b5b;
+                height: 30px;
+                min-width: 110px;
+                color: #fff;
+                font: normal 12px Arial;
+            }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+    <div class="container clearfix">
+
+        <!--sidebars-->
+        <aside id="sidebars">
+
+            <!--logo-->
+            <div class="commentAvatarDiv"><img class="commentAvatarImage" src="@ViewBag.head"></div>
+
+            <!--main-menu-->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../Index/Index">首页</a></li>
+                    <li><a href="../Class/Class">课程信息</a></li>
+                    <li><a href="../Calendar/Calendar">课程安排</a></li>
+                    <!--<li><a href="ppt.html">上课课件</a></li>-->
+                    <!--<li><a href="blog.html">课外学习资料</a>-->
+                    <!--</li>-->
+                    <li>
+                        <a href="#">元素分子图</a>
+                        <ul>
+                            <li><a href="../MolecularGraph/Chemicaltable">化学元素周期表</a></li>
+                            <li><a href="../MolecularGraph/Molecules">分子结构图</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../Discuss/Discuss">讨论区</a></li>
+                    <li class="active"><a href="Info">个人信息</a></li>
+                </ul>
+            </nav>
+
+            <!--social-navigatoin-->
+            <ul class="social-nav clearfix">
+                <li><a class="fb" href="#">&nbsp;</a></li>
+                <li><a class="tw" href="#">&nbsp;</a></li>
+                <li><a class="rss" href="#">&nbsp;</a></li>
+                <li><a class="bh" href="#">&nbsp;</a></li>
+                <li><a class="db" href="#">&nbsp;</a></li>
+            </ul>
+
+        </aside>
+
+
+
+        <!--CONTENT-->
+        <section id="content">
+
+            <!--header-->
+            <header>
+
+                <h2>编辑个人信息 <span> - 修改并保存个人信息</span></h2>
+
+            </header>
+
+
+            <!--BLOG-->
+            <section id="blog" class="clearfix">
+
+                <!--blog content-->
+                <div class="blog-content column" style="height: 600px;">
+
+                    <div id="comment-form" style=" margin: 0px 0px 20px;">
+
+                        <form  id="form" name="form" role="form" method="post" action="Info" enctype="multipart/form-data">
+                        <h3>头像</h3>
+                        <img id="preview">
+                        <label for="imgPicker"><img name="picture" style="width:110px;" src="~/Content/images/uploadPic.png"></label>
+                        <input type="file" id="imgPicker" style="width:100px;height:100px" name="imgPicker"/>
+
+                        <h3 style="margin-top: 10px;">姓名</h3>
+                        <input type="text" name="name" id="name" placeholder="输入姓名" />
+
+                        <h3>专业</h3>
+                        <input type="text" name="major" id="major" placeholder="输入专业" />
+
+                        <h3 style="margin-top: -100px;margin-left: 400px;">年级</h3>
+                        <input type="text" name="grade" id="grade" placeholder="输入年级" style="margin-left: 400px;" />
+
+
+                        <h3>个人简介</h3>
+                        <textarea cols="5" rows="5" id="description" name="description" placeholder="输入个人简介"></textarea>
+
+                        <input type="submit" name="submit" value="保存" />
+
+                        </form>
+                    </div>
+                </div>
+                <script>
+                    function toUser() {
+                        var picture = document.getElementById("preview");
+                        var name = document.getElementById("name");
+                        var id = document.getElementById("id");
+                        var major = document.getElementById("major");
+                        var grade = document.getElementById("grade");
+                        var description = document.getElementById("description");
+                        if (name.value.length <= 0 || major.value.length <= 0 || description.value.length <= 0 || grade.value.length <= 0 || id.value.length <= 0) {
+                            alert('以上信息不能为空');
+                        }
+                        else {
+                            $("#form").action = "Info";
+                            $("#form").method = "post";
+                            $("#form").submit();
+                        }
+
+                    }
+                    function isnum(num) {
+                        var renum = /^\d*$/;
+                        return (renum.test(num));
+                    }
+                </script>
+                <!--blog sidebar
+    <aside class="blog-sidebar column">
+
+            <div class="widget">
+                    <h4>SUBSCRIBE</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id ipsum et nisl adipiscing luctus eu eu dui.</p>
+                    <form id="subscribe" method="post" />
+                            <input type="text" placeholder="Your Email" value="" />
+                            <input type="submit" value="Subscribe" />
+                    </form>
+            </div>
+
+            <div class="widget">
+                    <h4>CATEGORIES</h4>
+                    <ul>
+                        <li><a href="#">Branding</a></li>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Photography</a></li>
+                        <li><a href="#">Identity</a></li>
+                        <li><a href="#">Logos</a></li>
+                        <li><a href="#">Themes</a></li>
+                        <li><a href="#">Travel</a></li>
+                        <li><a href="#">Photoshop</a></li>
+                    </ul>
+            </div>
+
+            <div class="widget">
+                    <h4>TAGS</h4>
+                    <div class="tags">
+                        <a href="#">Photography</a><a href="#">Themeforest</a><a href="#">Sales</a><a href="#">Wordpress</a><a href="#">jQuery</a><a href="#">HTML</a><a href="#">Video</a><a href="#">Themes</a>
+                    </div>
+            </div>
+
+            <div class="widget">
+                    <h4>ADVERTISMENT</h4>
+                    <div class="ads">
+                            <a href="#"><img src="images/ad.png" alt="" /></a>
+                            <a href="#"><img src="images/ad.png" alt="" /></a>
+                            <a href="#"><img src="images/ad.png" alt="" /></a>
+                            <a href="#"><img src="images/ad.png" alt="" /></a>
+                    </div>
+            </div>
+
+    </aside>-->
+
+            </section>
+
+        </section>
+
+    </div>
+    <script>
+document
+        .querySelector('#imgPicker')
+        .addEventListener('change', function(){
+            //当没选中图片时，清除预览
+            if(this.files.length === 0){
+                document.querySelector('#preview').src = '';
+                return;
+            }
+
+            //实例化一个FileReader
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                //当reader加载时，把图片的内容赋值给
+                var image = document.querySelector('#preview');
+                image.src = e.target.result;
+                image.style="width:80px;height:80px";
+
+            };
+
+            //读取选中的图片，并转换成dataURL格式
+            reader.readAsDataURL(this.files[0]);
+        }, false);</script>
+
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.cycle.all.js"></script>
+    <script src="~/Scripts/tabs-accordian.js"></script>
+
+    <!-- Custom JS -->
+    <script src="~/Scripts/custom.js"></script>
+    <div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>

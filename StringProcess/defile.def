@@ -1,0 +1,7 @@
+LIBRARY "StringProcess"
+
+EXPORTS
+
+addOne @ 1
+mytoStr @ 2
+mytoInt @ 3

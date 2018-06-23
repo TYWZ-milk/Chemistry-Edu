@@ -1,0 +1,7 @@
+LIBRARY "Win32 DLL"
+
+EXPORTS
+
+compare @ 1
+ErrorMessage @ 2
+addOne @ 3

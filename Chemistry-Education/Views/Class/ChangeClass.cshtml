@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewBag.Title = "更换课程";
+}
+
+<!doctype html>
+
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Style Sheet-->
+
+    <link rel="stylesheet" href="~/Content/css/style.css" />
+    <script type="text/javascript" charset="utf8" src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/dataTable.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        #new {
+            border: 1px solid #ce3d3d;
+            cursor: pointer;
+            background: #ff5b5b;
+            height: 30px;
+            min-width: 110px;
+            color: #fff;
+            font: normal 12px Arial;
+            float: right;
+            margin-top: -50px;
+        }
+    </style>
+    <link href="~/Content/css/dataTable.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="container clearfix">
+
+        <!--sidebars-->
+        <aside id="sidebars">
+
+            <!--logo-->
+            <div class="commentAvatarDiv"><img class="commentAvatarImage" src="@ViewBag.head"></div>
+
+            <!--main-menu-->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../Index/Index">首页</a></li>
+                    <li class="active"><a href="Class">课程信息</a></li>
+                    <li><a href="../Calendar/Calendar">课程安排</a></li>
+                    @*<li><a href="ppt.html">上课课件</a></li>*@
+                    @*<li><a href="blog.html">课外学习资料</a></li>*@
+                    <li>
+                        <a href="#">元素分子图</a>
+                        <ul>
+                            <li><a href="../MolecularGraph/Chemicaltable">化学元素周期表</a></li>
+                            <li><a href="../MolecularGraph/Molecules">分子结构图</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../Discuss/Discuss">讨论区</a></li>
+                    <li><a href="../Info/Info">个人信息</a></li>
+                </ul>
+            </nav>
+
+            <!--social-navigatoin-->
+            <ul class="social-nav clearfix">
+                <li><a class="fb" href="#">&nbsp;</a></li>
+                <li><a class="tw" href="#">&nbsp;</a></li>
+                <li><a class="rss" href="#">&nbsp;</a></li>
+                <li><a class="bh" href="#">&nbsp;</a></li>
+                <li><a class="db" href="#">&nbsp;</a></li>
+            </ul>
+
+        </aside>
+
+
+
+        <!--CONTENT-->
+        <section id="content">
+            <!--header-->
+            <header>
+
+                <h2>更改课程 <span> - 选择任一课程进行更改</span></h2>
+
+            </header>
+            <!--BLOG-->
+            <section id="blog" class="clearfix">
+
+                <!--blog content-->
+                <div class="blog-content column" style="height: 600px;">
+
+                    <div id="comment-form">
+                        <table id="table" class="display">
+                            <thead>
+                                <tr>
+                                    <th>课程序号</th>
+                                    <th>课程名称</th>
+                                    <th>必修/选修</th>
+                                    <th>考试/考查</th>
+                                    <th>教师</th>
+                                    <th>课程教材</th>
+                                    <th>上课安排</th>
+                                    <th>课程选择</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.userHome)
+                                {
+                                    <tr>
+
+                                        <td name="classID">@item.ClassID</td>
+                                        <td>@item.ClassName</td>
+                                        <td>@item.RS</td>
+                                        <td>@item.TE</td>
+                                        <td>@item.Teacher</td>
+                                        <td>@item.Textbook</td>
+                                        <td>@item.Time</td>
+                                        <td>选择该课程</td>
+                                       
+                                    </tr>
+                                }
+                                </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </section>
+        </section>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                            //ajax: {
+                            //    type: "post",
+                            //    url: 'Class',
+                            //    data: {
+                            //        "classID": $(
+                            //            '#classID').val()
+                            //    },
+                            //    dataSrc: ""
+                            //},
+                            /*columns: [
+                                {data: "movieId"},
+                                {data: "title",width:'30%'},
+                                {data: "publicationDate",width:'10%'},
+                                {data: "releaseDate",width:'10%'},
+                                {data: "runTime",width:'10%'},
+                                {data: "publisher"}
+                            ],*/
+                "columnDefs": [{
+                    // 定义操作列,######以下是重点########
+                    "targets": 7,//操作按钮目标列
+                    "data": null,
+                    "render": function (data, type, row) {
+                        var id = '"' + row.id + '"';
+                        var html = "<a href='Class?classID="+data[0]+"'  class='delete btn btn-default btn-xs'  ><i class='fa fa-times'></i> 选择该课程</a>"
+                        return html;
+                    }
+                }],
+                "bProcessing": true,
+                "bPaginage": true,
+                "sPaginationType": "full_numbers",
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条",
+                    "sZeroRecords": "没有找到符合条件的数据",
+                    "sInfo": "当前第 _START_ - _END_ 条　共计 _TOTAL_ 条",
+                    "sInfoEmpty": "没有记录",
+                    "sInfoFiltered": "(从 _MAX_ 条记录中过滤)",
+                    "sSearch": "搜索",
+                    "sProcessing": "数据加载中...",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "上一页",
+                        "sNext": "下一页",
+                        "sLast": "尾页"
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- jQuery -->
+
+    <script src="~/Scripts/jquery.cycle.all.js"></script>
+    <script src="~/Scripts/tabs-accordian.js"></script>
+
+    <!-- Custom JS -->
+    <script src="~/Scripts/custom.js"></script>
+    <div style="display:none">
+        <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+    </div>
+</body>
+</html>

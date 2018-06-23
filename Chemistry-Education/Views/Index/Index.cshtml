@@ -1,0 +1,115 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Style Sheet-->
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.css")" />
+
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+    <div class="container clearfix">
+
+        <!--SIDEBAR-->
+        <aside id="sidebars">
+
+            <!--logo-->
+            <div class="commentAvatarDiv"><img class="commentAvatarImage" src="@ViewBag.head"></div>
+
+            <!--main-menu-->
+            <nav class="main-nav">
+                <ul>
+                    <li class="active"><a href="../Index/Index">首页</a></li>
+                    <li><a href="../Class/Class">课程信息</a></li>
+                    <li><a href="../Calendar/Calendar">课程安排</a></li>
+                    @*<li><a href="ppt.html">上课课件</a></li>*@
+                    @*<li><a href="blog.html">课外学习资料</a></li>*@
+                    <li>
+                        <a href="#">元素分子图</a>
+                        <ul>
+                            <li><a href="../MolecularGraph/Chemicaltable">化学元素周期表</a></li>
+                            <li><a href="../MolecularGraph/Molecules">分子结构图</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../Discuss/Discuss">讨论区</a></li>
+                    <li><a href="../Info/Info">个人信息</a></li>
+                </ul>
+            </nav>
+
+            <!--social-navigatoin-->
+            <ul class="social-nav clearfix">
+                <li><a class="fb" href="#">&nbsp;</a></li>
+                <li><a class="tw" href="#">&nbsp;</a></li>
+                <li><a class="rss" href="#">&nbsp;</a></li>
+                <li><a class="bh" href="#">&nbsp;</a></li>
+                <li><a class="db" href="#">&nbsp;</a></li>
+            </ul>
+
+        </aside>
+
+
+
+        <!--CONTENT-->
+        <section id="content">
+
+            <!--slider-->
+            <div class="slider">
+
+                <div class="slides">
+
+                    <!--slide-->
+                    <article style="width:1000px">
+                        <img src="@Url.Content("~/Content/images/image_1.jpg")" alt="Slider Image" />
+                        <p>Dreamland Stock Photography Agency</p>
+                    </article>
+
+                    <!--slide-->
+                    <article style="width:1000px">
+                        <img src="@Url.Content("~/Content/images/image_2.jpg")" alt="Slider Image" />
+                    </article>
+
+                    <!--slide-->
+                    <article style="width:1000px">
+                        <img src="@Url.Content("~/Content/images/image_3.jpg")" alt="Slider Image" />
+                        <p>Lorem Ipsum Dolor Sit amit.</p>
+                    </article>
+
+                    <!--slide-->
+                    <article style="width:1000px">
+                        <img src="@Url.Content("~/Content/images/image_4.jpg")" alt="Slider Image" />
+                    </article>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.cycle.all.js")"></script>
+    <script src="@Url.Content("~/Scripts/tabs-accordian.js")"></script>
+
+    <!-- Custom JS -->
+    <script src="@Url.Content("~/Scripts/custom.js")"></script>
+    <div style="display:none">
+        <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+    </div>
+</body>
+</html>
