@@ -1,6 +1,14 @@
-﻿  stdafx.cpp
+﻿D:\Microsoft Visual Studio(VS2017)\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(Release\)包含从另一个项目(StringProcess.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  stdafx.cpp
   dllmain.cpp
   StringProcess.cpp
 c:\users\deii66\source\repos\chemistry-education\stringprocess\stringprocess.h(4): warning C4190: “mytoStr”有指定的 C 链接，但返回了与 C 不兼容的 UDT“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”
   d:\microsoft visual studio(vs2017)\2017\community\vc\tools\msvc\14.14.26428\include\xstring(4347): note: 参见“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”的声明
-c:\users\deii66\source\repos\chemistry-education\stringprocess\stringprocess.cpp(7): fatal error C1083: 无法打开包括文件: “afx.h”: No such file or directory
+c:\users\deii66\source\repos\chemistry-education\stringprocess\stringprocess.cpp(100): warning C4018: “<”: 有符号/无符号不匹配
+    正在创建库 C:\Users\deii66\source\repos\Chemistry-Education\Release\BasicOperation.lib 和对象 C:\Users\deii66\source\repos\Chemistry-Education\Release\BasicOperation.exp
+BasicOperation.exp : warning LNK4070: .EXP 中的 /OUT:StringProcess.dll 指令与输出文件名“C:\Users\deii66\source\repos\Chemistry-Education\Release\BasicOperation.dll”不同；忽略指令
+  正在生成代码
+  All 82 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+BasicOperation.exp : warning LNK4070: .EXP 中的 /OUT:StringProcess.dll 指令与输出文件名“C:\Users\deii66\source\repos\Chemistry-Education\Release\BasicOperation.dll”不同；忽略指令
+  StringProcess.vcxproj -> C:\Users\deii66\source\repos\Chemistry-Education\Release\BasicOperation.dll

@@ -5,3 +5,4 @@ EXPORTS
 compare @ 1
 ErrorMessage @ 2
 addOne @ 3
+Getlength @ 4

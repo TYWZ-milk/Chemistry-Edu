@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Chemistry_Education.Models;
 using System.Runtime.InteropServices;
+using COM.Interop;
+using Operation;
 namespace Chemistry_Education.Controllers
 {
     public class HomeController : Controller
@@ -13,8 +15,11 @@ namespace Chemistry_Education.Controllers
         public static extern int compare(int a, int b);
         [DllImport("Win32 DLL.dll")]
         public static extern int ErrorMessage(int type, ref byte str);
-        [DllImport("StringProcess.dll")]
+        [DllImport("BasicOperation.dll")]
         public static extern int  mytoInt(string str);
+        [DllImport("BasicOperation.dll")]
+        public static extern string mytoStr(int num);
+
 
         public ActionResult Login()
         {
@@ -25,6 +30,7 @@ namespace Chemistry_Education.Controllers
             if (userid != null)
             {
                 int studentID = int.Parse(userid);
+     
                 if (compare(int.Parse(password),int.Parse(repassword))==0)
                 {
                     Model1 ctxx = new Model1();

@@ -20,11 +20,22 @@ namespace Chemistry_Education.Controllers
             Model1 head = new Model1();
             var headquery = (from s in head.student where s.StudentID == studentID select s).FirstOrDefault();
             ViewBag.head = headquery.Head;
-
+            
 
             string classID = Request["classID"];
             if (classID != null)
             {
+                int newclassID = mytoInt(classID);
+                Model1 classesModel = new Model1();
+                var oldClasses = from s in classesModel.class_student where s.StudentID == studentID select new { s.ClassID };
+                foreach(var item in oldClasses.ToList())
+                {
+                    if(item.ClassID == newclassID)
+                    {
+                        return Content("<script>alert('您已选择该课程');history.go(-1);</script>");
+                    }
+                }
+
                 int classid = int.Parse(classID);
                 Model1 ctxx = new Model1();
                 var user = new class_student();

@@ -10,7 +10,7 @@ namespace Chemistry_Education.Controllers
     public class CalendarController : Controller
     {
         // GET: Calendar
-        [DllImport("StringProcess.dll")]
+        [DllImport("BasicOperation.dll")]
         public static extern int mytoInt(string str);
         public ActionResult Calendar()
         {

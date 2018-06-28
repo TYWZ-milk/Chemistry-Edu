@@ -1,0 +1,6 @@
+C:\Users\deii66\source\repos\Chemistry-Education\Operation\bin\Release\Operation.dll
+C:\Users\deii66\source\repos\Chemistry-Education\Operation\bin\Release\Operation.pdb
+C:\Users\deii66\source\repos\Chemistry-Education\Operation\obj\Release\SharedAssembly.csprojAssemblyReference.cache
+C:\Users\deii66\source\repos\Chemistry-Education\Operation\obj\Release\SharedAssembly.csproj.CoreCompileInputs.cache
+C:\Users\deii66\source\repos\Chemistry-Education\Operation\obj\Release\Operation.dll
+C:\Users\deii66\source\repos\Chemistry-Education\Operation\obj\Release\Operation.pdb

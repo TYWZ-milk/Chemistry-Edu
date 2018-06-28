@@ -5,13 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using Chemistry_Education.Models;
 using System.Runtime.InteropServices;
+using COM.Interop;
+using System.Threading.Tasks;
+using System.Threading;
+
 namespace Chemistry_Education.Controllers
 {
     public class DiscussController : Controller
     {
         [DllImport("Win32 DLL.dll")]
         public static extern int addOne(int ID);
-        [DllImport("StringProcess.dll")]
+        [DllImport("BasicOperation.dll")]
         public static extern int mytoInt(string str);
         // GET: Discuss
 
@@ -35,7 +39,9 @@ namespace Chemistry_Education.Controllers
                 Model1 newData = new Model1();
                 var articleCount = from s in newData.article select s;
                 var newarticle = new article();
-                newarticle.articleID = addOne(articleCount.Count());
+                FirstComObj temp = new FirstComObj();
+                newarticle.articleID = temp.AddOne_COM(articleCount.Count());
+                //newarticle.articleID = addOne(articleCount.Count());
                 newarticleid = newarticle.articleID;
                 newarticle.Content = newcontent;
                 newarticle.Brief = newbrief;
@@ -74,7 +80,7 @@ namespace Chemistry_Education.Controllers
                 comment.date = str;
                 comment.StudentID = studentID;
                 commentData.comment.Add(comment);
-                ;
+                
 
                 var comment_article = new article_comment();
                 comment_article.commentID = addOne(commentCount.Count());
@@ -83,12 +89,14 @@ namespace Chemistry_Education.Controllers
                 commentData.SaveChanges();
             }
 
+
             //显示文章
             Model1 ctx = new Model1();
             var query = (from s in ctx.article where s.articleID == ArticleID select s).FirstOrDefault();
             ViewBag.content = query.Content;
             ViewBag.brief = query.Brief;
             ViewBag.theme = query.Title;
+            ViewBag.Title = query.Title;
             ViewBag.picture = query.Picture;
 
             //显示评论
@@ -109,7 +117,6 @@ namespace Chemistry_Education.Controllers
 
             return View();
         }
-
         public ActionResult Discuss()
         {
 
@@ -132,6 +139,41 @@ namespace Chemistry_Education.Controllers
             return View();
         }
 
+        public delegate void MyDelegate(int ArticleID);
+        void Task1(int ArticleID)
+        {
+            Model1 ctx = new Model1();
+            var query = (from s in ctx.article where s.articleID == ArticleID select s).FirstOrDefault();
+            ViewBag.content = query.Content;
+            ViewBag.brief = query.Brief;
+            ViewBag.theme = query.Title;
+            ViewBag.Title = query.Title;
+            ViewBag.picture = query.Picture;
+        }
+        void Task2(int ArticleID)
+        {
+            Model1 ctx = new Model1();
+            Model1 ctxx = new Model1();
+            var comments = from s in ctxx.article_comment where s.articleID == ArticleID select new { s.commentID };
+            var commentHome = new List<Comment>();
+            foreach (var item in comments.ToList())
+            {
+
+                var commentContent = (from s in ctx.comment where s.commentID == item.commentID select s).FirstOrDefault();
+                var commentUser = (from s in ctx.student where s.StudentID == commentContent.StudentID select s).FirstOrDefault();
+
+                commentHome.Add(new Comment { Content = commentContent.Content, datetime = commentContent.date, name = commentUser.Name, Picture = commentUser.Head });
+            }
+            ViewBag.commentHome = commentHome;
+            ViewBag.commentNumber = commentHome.Count();
+
+        }
+        private static int backcall(int parameter)
+         {
+             //System.Windows.Forms.MessageBox.Show("这是一个回调函数");
+             return 0;
+         
+         }
         public ActionResult Article()
         {
             HttpCookie cook = Request.Cookies["temp"];
@@ -191,28 +233,34 @@ namespace Chemistry_Education.Controllers
                 commentData.SaveChanges();
             }
 
+            MyDelegate dele = new MyDelegate(Task1);
+            //dele.BeginInvoke(ArticleID,backcall,"我是异步调用的parameter");
+            dele += new MyDelegate(Task2);
+            dele(ArticleID);
+
             //显示文章
-            Model1 ctx = new Model1();
-            var query = (from s in ctx.article where s.articleID == ArticleID select s).FirstOrDefault();
-            ViewBag.content = query.Content;
-            ViewBag.brief = query.Brief;
-            ViewBag.theme = query.Title;
-            ViewBag.picture = query.Picture;
+            //Model1 ctx = new Model1();
+            //var query = (from s in ctx.article where s.articleID == ArticleID select s).FirstOrDefault();
+            //ViewBag.content = query.Content;
+            //ViewBag.brief = query.Brief;
+            //ViewBag.theme = query.Title;
+            //ViewBag.Title = query.Title;
+            //ViewBag.picture = query.Picture;
 
-            //显示评论
-            Model1 ctxx = new Model1();
-            var comments = from s in ctxx.article_comment where s.articleID == ArticleID select new { s.commentID };
-            var commentHome = new List<Comment>();
-            foreach (var item in comments.ToList())
-            {
+            ////显示评论
+            //Model1 ctxx = new Model1();
+            //var comments = from s in ctxx.article_comment where s.articleID == ArticleID select new { s.commentID };
+            //var commentHome = new List<Comment>();
+            //foreach (var item in comments.ToList())
+            //{
 
-                var commentContent = (from s in ctx.comment where s.commentID == item.commentID select s).FirstOrDefault();
-                var commentUser = (from s in ctx.student where s.StudentID == commentContent.StudentID select s).FirstOrDefault();
+            //    var commentContent = (from s in ctx.comment where s.commentID == item.commentID select s).FirstOrDefault();
+            //    var commentUser = (from s in ctx.student where s.StudentID == commentContent.StudentID select s).FirstOrDefault();
 
-                commentHome.Add(new Comment { Content = commentContent.Content, datetime = commentContent.date, name = commentUser.Name, Picture = commentUser.Head});
-            }
-            ViewBag.commentHome = commentHome;
-            ViewBag.commentNumber = commentHome.Count();
+            //    commentHome.Add(new Comment { Content = commentContent.Content, datetime = commentContent.date, name = commentUser.Name, Picture = commentUser.Head});
+            //}
+            //ViewBag.commentHome = commentHome;
+            //ViewBag.commentNumber = commentHome.Count();
             ViewBag.htmlHref = "Article?articleID=" + articleID + "";
            
             return View();
@@ -225,6 +273,7 @@ namespace Chemistry_Education.Controllers
             Model1 head = new Model1();
             var headquery = (from s in head.student where s.StudentID == studentID select s).FirstOrDefault();
             ViewBag.head = headquery.Head;
+            
             return View();
         }
     }

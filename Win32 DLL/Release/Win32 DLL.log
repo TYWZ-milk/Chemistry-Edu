@@ -1,8 +1,7 @@
-﻿  Win32 DLL.cpp
+﻿  stdafx.cpp
+  Win32 DLL.cpp
     正在创建库 C:\Users\deii66\source\repos\Chemistry-Education\Release\Win32 DLL.lib 和对象 C:\Users\deii66\source\repos\Chemistry-Education\Release\Win32 DLL.exp
   正在生成代码
-  1 of 3 functions (33.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   已完成代码的生成
   Win32 DLL.vcxproj -> C:\Users\deii66\source\repos\Chemistry-Education\Release\Win32 DLL.dll

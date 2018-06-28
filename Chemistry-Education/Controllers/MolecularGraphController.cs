@@ -9,7 +9,7 @@ namespace Chemistry_Education.Controllers
 {
     public class MolecularGraphController : Controller
     {
-        [DllImport("StringProcess.dll")]
+        [DllImport("BasicOperation.dll")]
         public static extern int mytoInt(string str);
         // GET: MolecularGraph
         public ActionResult Chemicaltable()

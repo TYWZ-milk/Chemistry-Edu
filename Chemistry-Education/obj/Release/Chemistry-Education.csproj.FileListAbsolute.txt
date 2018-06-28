@@ -115,3 +115,5 @@ C:\Users\deii66\source\repos\Chemistry-Education\Chemistry-Education\obj\Release
 C:\Users\deii66\source\repos\Chemistry-Education\Chemistry-Education\obj\Release\Chemistry-Education.dll
 C:\Users\deii66\source\repos\Chemistry-Education\Chemistry-Education\obj\Release\Chemistry-Education.pdb
 C:\Users\deii66\source\repos\Chemistry-Education\Chemistry-Education\obj\Release\Chemistry-Education.csprojAssemblyReference.cache
+C:\Users\deii66\source\repos\Chemistry-Education\Chemistry-Education\bin\Operation.dll
+C:\Users\deii66\source\repos\Chemistry-Education\Chemistry-Education\bin\Operation.pdb

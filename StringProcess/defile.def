@@ -5,3 +5,9 @@ EXPORTS
 addOne @ 1
 mytoStr @ 2
 mytoInt @ 3
+BubbleSort @ 4
+quickSort @ 5
+BinarySearch @ 6
+BinarySearchRecursive @ 7
+AllisNum @ 8
+InsertSort @ 9
