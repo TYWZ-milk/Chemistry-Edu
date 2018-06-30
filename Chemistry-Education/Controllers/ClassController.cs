@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Chemistry_Education.Models;
 using System.Runtime.InteropServices;
+using static Chemistry_Education.Models.Model1;
 namespace Chemistry_Education.Controllers
 {
     public class ClassController : Controller
@@ -35,7 +36,16 @@ namespace Chemistry_Education.Controllers
                         return Content("<script>alert('您已选择该课程');history.go(-1);</script>");
                     }
                 }
-
+                var fullclasses = (from s in classesModel.classes where s.ClassID == newclassID select s).FirstOrDefault();
+                if(fullclasses.Elective+1 > fullclasses.Limit)
+                {
+                    return Content("<script>alert('课程人数已达到上限，无法选择该课程');history.go(-1);</script>");
+                }
+                else
+                {
+                    fullclasses.Elective++;
+                    classesModel.SaveChanges();
+                }
                 int classid = int.Parse(classID);
                 Model1 ctxx = new Model1();
                 var user = new class_student();
@@ -54,7 +64,7 @@ namespace Chemistry_Education.Controllers
                 var query = (from s in ctx.classes where s.ClassID == item.ClassID select s).FirstOrDefault();
 
 
-                userHome.Add(new userHome { ClassID = query.ClassID, ClassName = query.ClassName, Teacher = query.Teacher, Phone = query.Phone, RS = query.RS, TE = query.TE, Textbook = query.Textbook, Time = query.Time, Description = query.Description });
+                userHome.Add(new userHome { ClassID = query.ClassID, ClassName = query.ClassName, Teacher = query.Teacher, Phone = query.Phone, RS = query.RS, TE = query.TE, Textbook = query.Textbook, Time = query.Time, Description = query.Description, Limit = query.Limit.Value, Elective = query.Elective.Value });
             }
             ViewBag.userHome = userHome;
             return View();
@@ -74,10 +84,12 @@ namespace Chemistry_Education.Controllers
             var userHome = new List<userHome>();
             foreach (var item in classes.ToList())
             {
-                userHome.Add(new userHome { ClassID = item.ClassID, ClassName = item.ClassName, Teacher = item.Teacher, Phone = item.Phone, RS = item.RS, TE = item.TE, Textbook = item.Textbook, Time = item.Time, Description = item.Description });
+                userHome.Add(new userHome { ClassID = item.ClassID, ClassName = item.ClassName, Teacher = item.Teacher, Phone = item.Phone, RS = item.RS, TE = item.TE, Textbook = item.Textbook, Time = item.Time, Description = item.Description, Limit = item.Limit.Value, Elective = item.Elective.Value });
             }
             ViewBag.userHome = userHome;
             return View();
         }
+
+
     }
 }

@@ -215,6 +215,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MolecularGraphController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -353,6 +354,11 @@
     <Content Include="Views\Discuss\NewArticle.cshtml" />
     <Content Include="Views\Info\Info.cshtml" />
     <Content Include="Views\Info\ChangeInfo.cshtml" />
+    <Content Include="Views\Manage\ManageIndex.cshtml" />
+    <Content Include="Views\Home\ManageLogin.cshtml" />
+    <Content Include="Views\Manage\ManageClass.cshtml" />
+    <Content Include="Views\Manage\ChangeClassInfo.cshtml" />
+    <Content Include="Views\Manage\ClassInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

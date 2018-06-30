@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using COM.Interop;
 using System.Threading.Tasks;
 using System.Threading;
+using static Chemistry_Education.Models.Model1;
 
 namespace Chemistry_Education.Controllers
 {

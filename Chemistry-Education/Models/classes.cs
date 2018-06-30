@@ -36,5 +36,9 @@ namespace Chemistry_Education.Models
 
         [StringLength(255)]
         public string Description { get; set; }
+
+        public int? Limit { get; set; }
+
+        public int? Elective { get; set; }
     }
 }

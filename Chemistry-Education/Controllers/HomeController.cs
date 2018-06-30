@@ -64,6 +64,9 @@ namespace Chemistry_Education.Controllers
 
         }
 
-
+        public ActionResult ManageLogin()
+        {
+            return View();
+        }
     }
 }

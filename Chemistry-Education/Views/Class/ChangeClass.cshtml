@@ -66,6 +66,7 @@
                     </li>
                     <li><a href="../Discuss/Discuss">讨论区</a></li>
                     <li><a href="../Info/Info">个人信息</a></li>
+                    <li><a href="../Home/Login">退出登录</a></li>
                 </ul>
             </nav>
 
@@ -107,24 +108,28 @@
                                     <th>教师</th>
                                     <th>课程教材</th>
                                     <th>上课安排</th>
+                                    <th>选课人数</th>
+                                    <th>选课上限</th>
                                     <th>课程选择</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in ViewBag.userHome)
                                 {
-                                    <tr>
+                                <tr>
 
-                                        <td name="classID">@item.ClassID</td>
-                                        <td>@item.ClassName</td>
-                                        <td>@item.RS</td>
-                                        <td>@item.TE</td>
-                                        <td>@item.Teacher</td>
-                                        <td>@item.Textbook</td>
-                                        <td>@item.Time</td>
-                                        <td>选择该课程</td>
-                                       
-                                    </tr>
+                                    <td name="classID">@item.ClassID</td>
+                                    <td>@item.ClassName</td>
+                                    <td>@item.RS</td>
+                                    <td>@item.TE</td>
+                                    <td>@item.Teacher</td>
+                                    <td>@item.Textbook</td>
+                                    <td>@item.Time</td>
+                                    <td>@item.Elective</td>
+                                    <td>@item.Limit</td>
+                                    <td>选择该课程</td>
+
+                                </tr>
                                 }
                                 </tbody>
                         </table>
@@ -158,7 +163,7 @@
                             ],*/
                 "columnDefs": [{
                     // 定义操作列,######以下是重点########
-                    "targets": 7,//操作按钮目标列
+                    "targets": 9,//操作按钮目标列
                     "data": null,
                     "render": function (data, type, row) {
                         var id = '"' + row.id + '"';
